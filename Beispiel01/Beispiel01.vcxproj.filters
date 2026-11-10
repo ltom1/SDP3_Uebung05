@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Implementation">
+      <UniqueIdentifier>{6f658e3f-74fb-44e9-a496-fccd88d0e8fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{80fe25f2-619a-486b-8a83-e63a0c7d43e8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
