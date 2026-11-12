@@ -1,0 +1,98 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><element><id>UMLClass</id><coordinates><x>189</x><y>504</y><w>162</w><h>54</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+IWheelSpeedSensor
+-
+/+ GetRevolutions(): size_t = 0/
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>333</x><y>288</y><w>207</w><h>81</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Vehicle
+-
+# Notify(): void
+
++ Register(listener: IVehicleListener): void
+
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>450</y><w>297</w><h>126</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+MotorVehicle
+-
+- mRevs: size_t
+- mTireDimension: size_t
+-
+# MotorVehicle(IWheelSpeedSensor, tireDimension: size_t)
+
++ Process(): void
++ GetCurrentSpeed(): size_t
+
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>756</x><y>513</y><w>189</w><h>81</h></coordinates><panel_attributes>KilometerCounter
+-
+- mKilometers: size_t
+-
++ Update() : void
+
++ KilometerCounter(ISpeedProvider)
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>981</x><y>513</y><w>171</w><h>63</h></coordinates><panel_attributes>Speedometer
+-
++ Update() : void
+
++ Speedometer(ISpeedProvider)
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>738</x><y>288</y><w>171</w><h>54</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+IVehicleListener
+-
+/+ Update() : void = 0/
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>954</x><y>288</y><w>153</w><h>54</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Display
+
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>486</x><y>360</y><w>27</w><h>108</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>243</x><y>441</y><w>153</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+- mWheelSpeedSensor </panel_attributes><additional_attributes>150;20;30;20;30;70</additional_attributes></element><element><id>Relation</id><coordinates><x>531</x><y>297</y><w>225</w><h>45</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=*
+- mListeners</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>Relation</id><coordinates><x>819</x><y>333</y><w>27</w><h>198</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>819</x><y>450</y><w>270</w><h>81</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>10;10;280;10;280;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1017</x><y>333</y><w>27</w><h>198</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>846</x><y>459</y><w>198</w><h>72</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>200;10;10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>711</x><y>360</y><w>90</w><h>207</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+- mProvider</panel_attributes><additional_attributes>50;200;20;200;20;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>549</x><y>342</y><w>171</w><h>54</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+ISpeedProvider
+-
+/+ GetCurrentSpeed(): size_t = 0/
+
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>621</x><y>387</y><w>27</w><h>81</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>693</x><y>387</y><w>306</w><h>243</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+- mProvider</panel_attributes><additional_attributes>320;170;290;170;290;250;10;250;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>162</x><y>594</y><w>225</w><h>90</h></coordinates><panel_attributes>WheelSpeedSimulator
+-
+- mFile: std::ifstream
+-
++ WheelSpeedSimulator(filename: std::string)
+
++ GetRevolutions(): size_t
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>261</x><y>549</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>558</x><y>621</y><w>144</w><h>45</h></coordinates><panel_attributes>Car
+-
++ Car(IWheelSpeedSensor)
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>621</x><y>567</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>702</x><y>153</y><w>108</w><h>54</h></coordinates><panel_attributes>
+Object
+
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>423</x><y>198</y><w>351</w><h>108</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>370;10;370;70;10;70;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>747</x><y>252</y><w>297</w><h>54</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;310;10;310;40</additional_attributes></element><element><id>Relation</id><coordinates><x>162</x><y>252</y><w>288</w><h>360</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>300;10;10;10;10;380</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1197</x><y>369</y><w>216</w><h>99</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt; 
+WindowsDisplay
+-
+-mhPipe: HANDLE
+-
+# WindowsDisplay(pipeName: std::string)
+
++ SendValue(value: unsigned int): bool
+
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1197</x><y>513</y><w>99</w><h>45</h></coordinates><panel_attributes>DigitalDisplay
+-
++ DigitalDisplay()
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1314</x><y>513</y><w>99</w><h>45</h></coordinates><panel_attributes>AnalogDisplay
+-
++ AnalogDisplay()
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1233</x><y>459</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1359</x><y>459</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1098</x><y>297</y><w>171</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+-mDisplay</panel_attributes><additional_attributes>10;20;160;20;160;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1017</x><y>252</y><w>351</w><h>135</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;370;10;370;130</additional_attributes></element></diagram>
