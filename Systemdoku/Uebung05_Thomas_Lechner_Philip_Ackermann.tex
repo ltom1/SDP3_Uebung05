@@ -93,6 +93,10 @@
 
 \section{Anforderungsdefinition (Systemspezifikation)}
  
+ Das Ziel ist es, eine Software zu entwickeln, mit der Daten von Fahrzeugen (in diesem Fall einem PKW) auf einem Fahrzeug-Prüfstand gespeichert werden können. Dabei wird über einen Raddrehsensor die Drehzahl von einem der Räder gemessen und basierend darauf die Momentangeschwindigkeit und die insgesamt am Prüfstand gefahrenen Kilometer ausgegeben.\\
+ Die Ausgabe und Visualisierung der Daten soll von zwei fertigen Display-Programmen durchgeführt werden.
+ Alle 500ms soll der Sensor überprüft, und die Daten aktualisiert werden. Ein PKW hat einen fixen Raddurchmesser von 600mm. 
+ 
 \section{Systementwurf}
 
 \subsection{Klassendiagramm}
@@ -107,6 +111,41 @@ Die HTML-Startdatei befindet sich im Verzeichnis \href{run:./../doxy/html/index.
 \section{Testprotokollierung}
 
 \section{Quellcode}
+\subsection{Object}
+\h{Beispiel01/Object}
+
+\subsection{ISpeedProvider}
+\h{Beispiel01/ISpeedProvider}
+
+\subsection{IWheelSpeedSensor}
+\h{Beispiel01/IWheelSpeedSensor}
+
+\subsection{WheelSpeedSimulator}
+\cppmodule{Beispiel01/WheelSpeedSimulator}
+
+\subsection{Vehicle}
+\cppmodule{Beispiel01/Vehicle}
+
+\subsection{MotorVehicle}
+\cppmodule{Beispiel01/MotorVehicle}
+
+\subsection{Car}
+\cppmodule{Beispiel01/Car}
+
+\subsection{IVehicleListener}
+\h{Beispiel01/IVehicleListener}
+
+\subsection{Display}
+\h{Beispiel01/Display}
+
+\subsection{KilometerCounter}
+\cppmodule{Beispiel01/KilometerCounter}
+
+\subsection{Speedometer}
+\cppmodule{Beispiel01/Speedometer}
+
+\subsection{Testtreiber}
+\cpp{Beispiel01/Test}
 
 \end{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
