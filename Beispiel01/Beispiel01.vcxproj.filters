@@ -37,6 +37,9 @@
     <Filter Include="Third Party">
       <UniqueIdentifier>{94615eea-3503-4131-a0be-67ed2ce75d47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{04b06e91-5845-43ba-b36c-384480cfe89e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -75,5 +78,16 @@
     <ClInclude Include="Speedometer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="RealisticRevs.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="LinearRevs.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="InvalidRevs.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
