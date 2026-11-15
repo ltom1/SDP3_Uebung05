@@ -26,6 +26,7 @@
     <ClCompile Include="Speedometer.cpp">
       <Filter>Implementation</Filter>
     </ClCompile>
+    <ClCompile Include="Display.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Implementation">

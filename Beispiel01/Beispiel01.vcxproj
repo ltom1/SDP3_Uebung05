@@ -103,6 +103,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="IWheelSpeedSensor.h" />
     <ClCompile Include="KilometerCounter.cpp" />
     <ClCompile Include="MotorVehicle.cpp" />
