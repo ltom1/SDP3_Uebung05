@@ -1,5 +1,5 @@
-#ifndef ISPEEDPROVIDER
-#define ISPEEDPROVIDER
+#ifndef ISPEEDPROVIDER_H
+#define ISPEEDPROVIDER_H
 
 #include <memory>
 
