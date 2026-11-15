@@ -11,5 +11,7 @@ Speedometer::Speedometer(ISpeedProvider::SPtr provider) :
 
 void Speedometer::Update()
 {
-	mDisplay->SendValue(mProvider->GetCurrentSpeed());
+	size_t const speed = mProvider->GetCurrentSpeed();
+	// Clamp value to max if it exceeds unsigned int limit.
+	mDisplay->SendValue(speed < UINT_MAX ? static_cast<unsigned int>(speed) : UINT_MAX);
 }
