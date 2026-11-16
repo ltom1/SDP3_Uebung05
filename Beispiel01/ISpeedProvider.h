@@ -15,7 +15,7 @@ public:
 
 	/// @brief Provides the current speed value.
 	/// @returns The current speed value.
-	virtual size_t GetCurrentSpeed() = 0;
+	virtual double GetCurrentSpeed() const = 0;
 
 	/// @brief Virtual DTor.
 	virtual ~ISpeedProvider() = default;

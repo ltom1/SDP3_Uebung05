@@ -4,6 +4,7 @@
 #include "Speedometer.h"
 #include "KilometerCounter.h"
 #include "ISpeedProvider.h"
+#include "Car.h"
 
 
 //////////////////////////////////////////
@@ -60,8 +61,8 @@ TEST(Speedometer, Test) {
 	class SpeedSim : public ISpeedProvider
 	{
 	public:
-		size_t GetCurrentSpeed() {
-			static size_t speed = 0;
+		double GetCurrentSpeed() const {
+			static double speed = 0.0;
 			speed += 10;
 			return speed;
 		}
@@ -81,7 +82,7 @@ TEST(KilometerCounter, Test) {
 	class SpeedSim: public ISpeedProvider
 	{
 	public:
-		size_t GetCurrentSpeed() {
+		double GetCurrentSpeed() const {
 			return 3600; // Full speed: 1km/s.
 		}
 	};
@@ -95,3 +96,22 @@ TEST(KilometerCounter, Test) {
 }
 
 //////////////////////////////////////////
+
+TEST(Car, Test) {
+	auto speedSensor = std::make_unique<WheelSpeedSimulator>("RealisticRevs.txt");
+	auto  car1 = std::make_shared<Car>(std::move(speedSensor));
+
+	auto counter = std::make_unique<KilometerCounter>(car1);
+	auto speedometer = std::make_unique<Speedometer>(car1);
+
+	car1->Register(std::move(counter));
+	car1->Register(std::move(speedometer));
+
+	
+
+	for (size_t i = 0; i < 55; ++i) {
+		car1->Process();
+		Sleep(500);
+	}
+
+}

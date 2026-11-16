@@ -104,6 +104,20 @@
 
 \subsection{Designentscheidungen}
 
+\textbf{Object} wird wieder als Basisklasse aller Basisklassen verwendet, damit der virtuelle Destruktor überall vorhanden ist.\\
+
+Die abstrakte Klasse \textbf{Vehicle} bildet das Subjekt im \textbf{Observer Pattern}. Sie verwaltet ein Vector von \textbf{IVehicleListener}n (Member \textit{mListeners}), die über die öffentliche Methode \textit{Register} hinzugefügt werden können. Über die protected Methode \textit{Notify} werden alle registrierten Listener über Zustandsänderungen informiert, indem deren \textit{Update}-Methode aufgerufen wird.\\
+
+Die abstrakte Klasse \textbf{MotorVehicle} erbt von \textbf{Vehicle} und implementiert gleichzeitig das Interface \textbf{ISpeedProvider}. Sie kapselt die physikalischen Eigenschaften und den Zustand eines Kraftfahrzeugs, konkret den Reifendurchmesser (\textit{mTireDimension}) und die aktuellen Radumdrehungen (\textit{mRevs}). Um die Radumdrehungen auszulesen, hält sie eine Komposition zu einem \textbf{IWheelSpeedSensor} (\textit{mWheelSpeedSensor}), der beim Konstruieren übergeben wird. In der Methode \textit{Process} wird die aktuellem Daten vom WheelSpeedSensor eingelesen und gespeichert. Anschließend werden über \textit{Notify} die Listener über neue Werte benachrichtigt. Über \textit{GetCurrentSpeed} wird anhand der Umdrehungen und des Reifendurchmessers die aktuelle Geschwindigkeit des Fahrzeuges berechnet.\\
+
+Die konkrete Klasse \textbf{Car} erbt von \textbf{MotorVehicle} und legt im Konstruktor einen fixen Reifendurchmesser fest, während der \textbf{IWheelSpeedSensor} an den Konstruktor von \textbf{MotorVehicle} weitergereicht wird.\\
+
+Für die Erfassung der Radumdrehungen definiert das Interface \textbf{IWheelSpeedSensor} die Methode \textit{GetRevolutions}. Die konkrete Klasse \textbf{WheelSpeedSimulator} implementiert dieses Interface. Sie liest die Umdrehungswerte über einen Dateistream (\textit{mFile}) aus einer im Konstruktor übergebenen Datei aus.\\
+
+Auf der Seite der Beobachter erben die konkreten Anzeigeklassen \textbf{KilometerCounter} und \textbf{Speedometer} sowohl von der abstrakten Klasse \textbf{Display} als auch vom Interface \textbf{IVehicleListener}. Beide halten jeweils eine Referenz auf einen \textbf{ISpeedProvider} (\textit{mProvider}), um bei einem Aufruf ihrer \textit{Update}-Methode die aktuelle Geschwindigkeit abzufragen. \textbf{Speedometer} gibt diesen Wert direkt an das Display weiter, während \textbf{KilometerCounter} zusätzlich die gefahrenen Kilometer in \textit{mKilometers} aufsummiert.\\
+
+Die abstrakte Klasse \textbf{Display} kapselt die Darstellung über ein \textbf{WindowsDisplay}-Objekt (\textit{mDisplay}). \textbf{WindowsDisplay} ist selbst abstrakt, erbt von \textbf{Object} und übernimmt die Kommunikation über Windows-Pipes (\textit{mhPipe}) mittels der Methode \textit{SendValue}. Die konkreten Unterklassen \textbf{DigitalDisplay} und \textbf{AnalogDisplay} übergeben im Konstruktor lediglich den jeweiligen Pipe-Namen an den Konstruktor von \textbf{WindowsDisplay}, um die unterschiedliche Visualisierung zu realisieren.\\
+
 \section{Dokumentation der Komponenten (Klassen)}
 
 Die HTML-Startdatei befindet sich im Verzeichnis \href{run:./../doxy/html/index.html}{./../doxy/html/index.html}
