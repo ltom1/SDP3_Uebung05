@@ -97,7 +97,7 @@ TEST(KilometerCounter, Test) {
 
 //////////////////////////////////////////
 
-TEST(Car, Test) {
+TEST(Car, IntegrationTest) {
 	auto speedSensor = std::make_unique<WheelSpeedSimulator>("RealisticRevs.txt");
 	auto  car1 = std::make_shared<Car>(std::move(speedSensor));
 
