@@ -107,11 +107,39 @@ TEST(Car, IntegrationTest) {
 	car1->Register(std::move(counter));
 	car1->Register(std::move(speedometer));
 
-	
-
 	for (size_t i = 0; i < 55; ++i) {
 		car1->Process();
 		Sleep(500);
+	}
+
+}
+
+TEST(Car, noSensor) {
+
+
+	try {
+		Car const car(nullptr); // make a car with no wheel speed sensor
+		EXPECT_EQ(1, 0); // did not catch exeption
+	}
+	catch (std::invalid_argument const& ex) {
+		
+		EXPECT_STREQ(ex.what(), "Provided WheelSpeedSensor is nullptr!"); // catched exeption
+	}
+
+}
+
+TEST(Car, noListener) {
+
+	auto speedSensor = std::make_unique<WheelSpeedSimulator>("RealisticRevs.txt");
+	Car car(std::move(speedSensor));
+
+	try {
+		car.Register(nullptr); // register a non existent display
+		EXPECT_EQ(1, 0); // did not catch exeption
+	}
+	catch (std::invalid_argument const& ex) {
+
+		EXPECT_STREQ(ex.what(), "Attached listener is nullptr!"); // catched exeption
 	}
 
 }

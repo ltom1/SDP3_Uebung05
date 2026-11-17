@@ -5,7 +5,7 @@
 #include "IVehicleListener.h"
 
 #include <vector>
-
+#include <stdexcept>
 
 /// @author Philip Ackermann
 /// @date 16.11.2026

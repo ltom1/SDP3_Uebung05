@@ -1,5 +1,5 @@
 #include "MotorVehicle.h"
-#include <stdexcept>
+
 
 static auto const cErrNullptr = "Provided WheelSpeedSensor is nullptr!";
 
