@@ -87,8 +87,8 @@
 \subsection{Aufwand}
 
 \begin{itemize}
-	\item \docauthor: geschätzt 7 Ph / tatsächlich 0 Ph
-	\item \doccoauthor: geschätzt 7 Ph / tatsächlich 0 Ph
+	\item \docauthor: geschätzt 7 Ph / tatsächlich 6 Ph
+	\item \doccoauthor: geschätzt 7 Ph / tatsächlich 6 Ph
 \end{itemize}
 
 \section{Anforderungsdefinition (Systemspezifikation)}
@@ -118,11 +118,16 @@ Auf der Seite der Beobachter erben die konkreten Anzeigeklassen \textbf{Kilomete
 
 Die abstrakte Klasse \textbf{Display} kapselt die Darstellung über ein \textbf{WindowsDisplay}-Objekt (\textit{mDisplay}). \textbf{WindowsDisplay} ist selbst abstrakt, erbt von \textbf{Object} und übernimmt die Kommunikation über Windows-Pipes (\textit{mhPipe}) mittels der Methode \textit{SendValue}. Die konkreten Unterklassen \textbf{DigitalDisplay} und \textbf{AnalogDisplay} übergeben im Konstruktor lediglich den jeweiligen Pipe-Namen an den Konstruktor von \textbf{WindowsDisplay}, um die unterschiedliche Visualisierung zu realisieren.\\
 
+Durch die vielen Interfaces ist das Design leicht erweiterbar. Man könnte einfach neue Klassen hinzufügen, beispielsweise \textbf{Moped}, \textbf{RealWheelSpeedSensor} oder \textbf{AvgSpeedDisplay}.\\
+
 \section{Dokumentation der Komponenten (Klassen)}
 
 Die HTML-Startdatei befindet sich im Verzeichnis \href{run:./../doxy/html/index.html}{./../doxy/html/index.html}
 
 \section{Testprotokollierung}
+Die Unit- und Systemtests wurden wieder mit Google Test Suite durchgeführt. Vor dem Starten der Tests müssen die beiden Display Programme geöffnet und ggf. der Server neu gestartet werden. Die Funktionalität ist teilweise visuell zu überprüfen, da die Programme keine bessere Anbindungsmöglichkeit bieten.
+
+\testoutput{Systemdoku/Tests}
 
 \section{Quellcode}
 \subsection{Object}

@@ -16,14 +16,14 @@ class Speedometer : public Display, public IVehicleListener
 public:
 	/// @brief CTor.
 	/// @param[in] provider The ISpeedProvider the Speedometer gets the speed from.
-	Speedometer(ISpeedProvider::SPtr provider);
+	Speedometer(ISpeedProvider::SPtr const& provider);
 
 	/// @brief Notification method, when speed data changes.
 	void Update() override;
 
 private:
 	/// @brief The source of the speed values.
-	ISpeedProvider::SPtr mProvider;
+	ISpeedProvider::WPtr mProvider;
 };
 
 #endif

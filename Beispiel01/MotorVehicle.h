@@ -30,7 +30,7 @@ protected:
 
 private:
 	/// @brief The diameter of a tire in mm
-	size_t mTireDimension;
+	size_t const mTireDimension;
 
 	// @brief The revolutions of the wheels
 	size_t mRevs = 0;

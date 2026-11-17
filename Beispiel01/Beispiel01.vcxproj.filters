@@ -92,5 +92,8 @@
     <Text Include="InvalidRevs.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="EmptyRevs.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -1,0 +1,48 @@
+Visual Leak Detector read settings from: C:\Program Files (x86)\Visual Leak Detector\vld.ini
+Visual Leak Detector Version 2.5.1 installed.
+Running main() from D:\a\_work\1\s\googletest\googletest\src\gtest_main.cc
+[==========] Running 11 tests from 4 test cases.
+[----------] Global test environment set-up.
+[----------] 4 tests from WheelSpeedSimulator
+[ RUN      ] WheelSpeedSimulator.DoesNotExist
+[       OK ] WheelSpeedSimulator.DoesNotExist (1 ms)
+[ RUN      ] WheelSpeedSimulator.Test
+[       OK ] WheelSpeedSimulator.Test (1 ms)
+[ RUN      ] WheelSpeedSimulator.EmptyFile
+[       OK ] WheelSpeedSimulator.EmptyFile (0 ms)
+[ RUN      ] WheelSpeedSimulator.InvalidFileFormat
+[       OK ] WheelSpeedSimulator.InvalidFileFormat (0 ms)
+[----------] 4 tests from WheelSpeedSimulator (5 ms total)
+
+[----------] 2 tests from Speedometer
+[ RUN      ] Speedometer.Test
+WindowsClient: Server not online. Waiting...
+WindowsClient: Server not online. Waiting...
+[       OK ] Speedometer.Test (11103 ms)
+[ RUN      ] Speedometer.Nullptr
+WindowsClient: Server not online. Waiting...
+[       OK ] Speedometer.Nullptr (3016 ms)
+[----------] 2 tests from Speedometer (14125 ms total)
+
+[----------] 2 tests from KilometerCounter
+[ RUN      ] KilometerCounter.Test
+[       OK ] KilometerCounter.Test (10153 ms)
+[ RUN      ] KilometerCounter.Nullptr
+WindowsClient: Server not online. Waiting...
+[       OK ] KilometerCounter.Nullptr (3005 ms)
+[----------] 2 tests from KilometerCounter (13163 ms total)
+
+[----------] 3 tests from Car
+[ RUN      ] Car.IntegrationTest
+[       OK ] Car.IntegrationTest (27782 ms)
+[ RUN      ] Car.noSensor
+[       OK ] Car.noSensor (0 ms)
+[ RUN      ] Car.noListener
+[       OK ] Car.noListener (1 ms)
+[----------] 3 tests from Car (27789 ms total)
+
+[----------] Global test environment tear-down
+[==========] 11 tests from 4 test cases ran. (55091 ms total)
+[  PASSED  ] 11 tests.
+No memory leaks detected.
+Visual Leak Detector is now exiting.

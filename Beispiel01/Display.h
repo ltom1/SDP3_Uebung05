@@ -8,7 +8,7 @@
 /// @author Thomas Lechner
 /// @date 15.11.2026
 /// @brief Abstract base class for all classes that visualize data using a WindowsDisplay member.
-class Display
+class Display : public Object
 {
 protected:
 	/// @brief CTor.

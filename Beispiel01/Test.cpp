@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 
+#include <vld.h>
+
 #include "WheelSpeedSimulator.h"
 #include "Speedometer.h"
 #include "KilometerCounter.h"
@@ -28,6 +30,15 @@ TEST(WheelSpeedSimulator, Test) {
 	{
 		EXPECT_EQ(sim.GetRevolutions(), i);
 	}
+
+	EXPECT_EQ(sim.GetRevolutions(), 0);
+	EXPECT_EQ(sim.GetRevolutions(), 0);
+	EXPECT_EQ(sim.GetRevolutions(), 0);
+}
+
+TEST(WheelSpeedSimulator, EmptyFile) {
+
+	WheelSpeedSimulator sim{ "EmptyRevs.txt" };
 
 	EXPECT_EQ(sim.GetRevolutions(), 0);
 	EXPECT_EQ(sim.GetRevolutions(), 0);
@@ -67,12 +78,41 @@ TEST(Speedometer, Test) {
 			return speed;
 		}
 	};
+	auto const sim = std::make_shared<SpeedSim>();
 
-	Speedometer speedometer{ std::make_shared<SpeedSim>() };
+	Speedometer speedometer{ sim };
 
 	for (size_t i = 0; i < 10; ++i) {
 		speedometer.Update();
 		Sleep(500);
+	}
+}
+
+TEST(Speedometer, Nullptr) {
+	class SpeedSim : public ISpeedProvider
+	{
+	public:
+		double GetCurrentSpeed() const {
+			return 3600; // Full speed: 1km/s.
+		}
+	};
+
+	try {
+		Speedometer const speedometer{ nullptr };
+		FAIL();
+	}
+	catch (std::invalid_argument const& ex) {
+		EXPECT_STREQ(ex.what(), "Provided ISpeedProvider is nullptr!");
+	}
+
+	Speedometer speedometer{ std::make_shared<SpeedSim>() };
+	try {
+		speedometer.Update();
+		FAIL();
+	}
+	catch (std::runtime_error const& ex)
+	{
+		EXPECT_STREQ(ex.what(), "Provided ISpeedProvider is nullptr!");
 	}
 }
 
@@ -87,7 +127,9 @@ TEST(KilometerCounter, Test) {
 		}
 	};
 
-	KilometerCounter counter{ std::make_shared<SpeedSim>() };
+	auto const sim = std::make_shared<SpeedSim>();
+
+	KilometerCounter counter{ sim };
 
 	for (size_t i = 0; i < 20; ++i) {
 		counter.Update();
@@ -95,11 +137,39 @@ TEST(KilometerCounter, Test) {
 	}
 }
 
+TEST(KilometerCounter, Nullptr) {
+	class SpeedSim : public ISpeedProvider
+	{
+	public:
+		double GetCurrentSpeed() const {
+			return 3600; // Full speed: 1km/s.
+		}
+	};
+
+	try {
+		KilometerCounter const counter{ nullptr };
+		FAIL();
+	}
+	catch (std::invalid_argument const& ex) {
+		EXPECT_STREQ(ex.what(), "Provided ISpeedProvider is nullptr!");
+	}
+
+	KilometerCounter counter{ std::make_shared<SpeedSim>() };
+	try {
+		counter.Update();
+		FAIL();
+	}
+	catch (std::runtime_error const& ex)
+	{
+		EXPECT_STREQ(ex.what(), "Provided ISpeedProvider is nullptr!");
+	}
+}
+
 //////////////////////////////////////////
 
 TEST(Car, IntegrationTest) {
 	auto speedSensor = std::make_unique<WheelSpeedSimulator>("RealisticRevs.txt");
-	auto  car1 = std::make_shared<Car>(std::move(speedSensor));
+	auto const car1 = std::make_shared<Car>(std::move(speedSensor));
 
 	auto counter = std::make_unique<KilometerCounter>(car1);
 	auto speedometer = std::make_unique<Speedometer>(car1);

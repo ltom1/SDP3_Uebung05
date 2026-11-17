@@ -130,6 +130,7 @@
     <ClInclude Include="WindowsDisplay.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="EmptyRevs.txt" />
     <Text Include="InvalidRevs.txt" />
     <Text Include="LinearRevs.txt" />
     <Text Include="RealisticRevs.txt" />

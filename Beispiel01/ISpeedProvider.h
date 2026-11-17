@@ -10,9 +10,12 @@
 class ISpeedProvider
 {
 public:
-	/// @brief std::unique_ptr of this class.
+	/// @brief std::shared_ptr of this class.
 	using SPtr = std::shared_ptr<ISpeedProvider>;
 
+	/// @brief std::weak_ptr of this class.
+	using WPtr = std::weak_ptr<ISpeedProvider>;
+	
 	/// @brief Provides the current speed value.
 	/// @returns The current speed value.
 	virtual double GetCurrentSpeed() const = 0;

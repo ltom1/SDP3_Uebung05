@@ -26,12 +26,15 @@ size_t WheelSpeedSimulator::GetRevolutions()
 {
 	if (!mFile.is_open()) throw std::runtime_error(cErrFileOpen); // Should not happen.
 
-	if (mFile.eof()) return DEFAULT_REVS;
-
 	std::string line = "";
-	if (!std::getline(mFile, line)) throw std::runtime_error(cErrFileRead);
+	if (!std::getline(mFile, line))
+	{
+		if (mFile.eof()) return DEFAULT_REVS;
 
-	size_t revs = 0;
+		throw std::runtime_error(cErrFileRead);
+	}
+
+	size_t revs = DEFAULT_REVS;
 	// Used to parse the size_t and disallow spaces.
 	auto [ptr, ec] = std::from_chars(line.data(), line.data() + line.size(), revs);
 

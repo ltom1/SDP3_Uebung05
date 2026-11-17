@@ -16,7 +16,7 @@ class KilometerCounter : public Display, public IVehicleListener
 public:
 	/// @brief CTor.
 	/// @param[in] provider The ISpeedProvider the KilometerCounter gets the speed from.
-	KilometerCounter(ISpeedProvider::SPtr provider);
+	KilometerCounter(ISpeedProvider::SPtr const& provider);
 
 	/// @brief Notification method, when speed data changes.
 	///
@@ -25,7 +25,7 @@ public:
 
 private:
 	/// @brief The source of the speed values.
-	ISpeedProvider::SPtr mProvider;
+	ISpeedProvider::WPtr mProvider;
 
 	/// @brief The driven kilometers.
 	double mKilometers = 0.0;
