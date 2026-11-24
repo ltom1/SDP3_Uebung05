@@ -124,6 +124,12 @@ Durch die vielen Interfaces ist das Design leicht erweiterbar. Man könnte einfa
 
 Die HTML-Startdatei befindet sich im Verzeichnis \href{run:./../doxy/html/index.html}{./../doxy/html/index.html}
 
+\section{Dateibeschreibung}
+
+Die Struktur der Radumdrehungs-Datei muss folgendermaßen aussehen:
+\testoutput{Systemdoku/EBNF}
+In jeder Zeile der Datei steht genau eine Umdrehungszahl $\rightarrow$ also mit newline getrennt (nicht in EBNF).
+
 \section{Testprotokollierung}
 Die Unit- und Systemtests wurden wieder mit Google Test Suite durchgeführt. Vor dem Starten der Tests müssen die beiden Display Programme geöffnet und ggf. der Server neu gestartet werden. Die Funktionalität ist teilweise visuell zu überprüfen, da die Programme keine bessere Anbindungsmöglichkeit bieten.
 
